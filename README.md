@@ -47,9 +47,53 @@ then re-run the install script. For an always-on rule, add `rules/<name>.md`
 - `wrap-up`: end-of-session note appended to a daily Obsidian note (set `WRAP_UP_DIR` to change the folder).
 - `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
 - `how`: early-career-friendly explanation of how a subsystem works, with optional multi-critic design critique, using parallel Explore subagents. Adapted from poteto/how.
+- `why`: why something was built this way, answered from commits and PRs, not the code.
+- `teach`: layered, plain-English explanation of a change or subsystem; runs `how` and `why` together.
+- `blast-radius`: what a change could break outside the diff, with the safety claim proven by running code.
+- `architect`: sketch callers, types, and module shape (stub bodies) and compare designs before implementing.
+- `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
+- `in-your-own-words`: restate the goal and problem before any work (user-invoked).
+- `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task (user-invoked).
+
+- `pause-safely`: stop cleanly on request (one `wip:` commit plus a resume note in `~/.claude/resume/`) so a fresh agent can continue (user-invoked).
+- `catchup`: catch up after time away: what changed, plus every decision only you can make, with a recommended pick (user-invoked, read-only).
+
+`why`, `teach`, `blast-radius`, `architect`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
+are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
+
+## Example workflow
+
+One feature, start to finish. Each step names the skill and when to reach for it.
+
+1. **Frame the ask.** Rough idea in hand: `/sharpen` rewrites the prompt to be
+   deeper. Send it, then `/in-your-own-words` to confirm the agent understood
+   the goal and problem before it touches anything.
+2. **Understand the area.** `how` for the mechanics of the code you will
+   change. `why` for the history behind a strange constant or design. If you
+   need it to really stick, `teach` combines both into a layered explanation.
+3. **Decide the shape.** Small or code-level change: `architect` (sketch
+   callers, types, signatures; compare two designs). Bigger or shared change:
+   `design-doc-draft`, then `design-doc-review` against the codebase.
+4. **Check the risk.** Before editing, `blast-radius` on the planned change to
+   find what else it touches and the one fact its safety depends on.
+5. **Build with tests first.** The `tdd` rule forces a failing test before
+   any fix or feature. `unit-testing` guides what and how to test, and what a
+   change does to existing tests. The `no-excuses` rule keeps TODOs and
+   suppressions out.
+6. **Try to break it.** `interrogate` on the finished diff: adversaries must
+   prove each finding with a run.
+7. **Close out.** `wrap-up` saves where you are and the next step to your daily
+   note. Returning to an old design doc weeks later: `design-doc-refresh`.
+
+Around the edges of that flow:
+- Stepping away mid-task: `pause-safely` commits the work as `wip:` and writes
+  a resume note so a fresh session can continue, then offers to run `wrap-up` for your own note.
+- Coming back while agents ran in the background: `catchup` lists what changed
+  and the decisions waiting on you.
 
 ## Rules
 Always-on agent rules (not skills). The install script symlinks each
 `rules/*.md` into `~/.claude/rules/`, which Claude Code loads every session.
 Docs for a rule live in `rules/<name>/`.
 - `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work.
+- `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
