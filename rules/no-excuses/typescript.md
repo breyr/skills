@@ -20,6 +20,29 @@ links the evidence (issue URL or library version), and it is as narrow as
 possible (one line, specific rule or error code, never a blanket disable).
 Report every such suppression to the user in your reply.
 
+## Enforce with lint (so it does not rely on the agent's discipline)
+ESLint flat config; adjust to the repo's setup and ask before changing it.
+See "Adapting the ESLint rules to your project" in `README.md` for how.
+```js
+// eslint.config.js (needs typescript-eslint; vitest plugin optional)
+{
+  linterOptions: { reportUnusedDisableDirectives: 'error' },
+  rules: {
+    'no-warning-comments': ['error', { terms: ['todo', 'fixme', 'xxx', 'hack'], location: 'anywhere' }],
+    '@typescript-eslint/ban-ts-comment': ['error', {
+      'ts-ignore': true, 'ts-nocheck': true,
+      'ts-expect-error': 'allow-with-description', // tests only, with a reason
+    }],
+    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-floating-promises': 'error', // needs type-aware linting
+    'no-empty': ['error', { allowEmptyCatch: false }],
+    'vitest/no-disabled-tests': 'error',               // eslint-plugin-vitest
+  },
+}
+```
+Run lint in CI and in the agent's finish checklist. Lint catches the
+mechanical cases; the review step still reads the comments for the rest.
+
 ## Doc comments (the good kind)
 - TSDoc/JSDoc on **exported** functions, types, and hooks: what it is for,
   non-obvious parameter meaning, what it returns, what it throws, an

@@ -32,9 +32,9 @@ references/critique-rubric.md    six lenses the critics review against
   Noted / Dismissed and must verify each Act on item against the cited code.
 - **Audience** is set in `SKILL.md` and `explainer-prompt.md` (early-career,
   about a year or two in). Change it in both places.
-- Overlaps with the `code-map` skill: `how` is a conversational explanation
-  with optional critique; `code-map` produces a saved, line-cited note with
-  diagrams.
+- Replaced the former `code-map` skill. `how` does not save a note; ask
+  Claude to write the explanation to a file if you want one. Diagrams are
+  Mermaid, only where they clarify a flow.
 
 ## Where the ideas come from
 - **Structure and workflow** (explain/critique modes, parallel explorers,

@@ -1,16 +1,26 @@
 #!/usr/bin/env bash
-# Symlink every skill in ./skills into ~/.claude/skills. Safe to re-run.
+# Symlink every skill in ./skills into ~/.claude/skills and every rule file in
+# ./rules/*.md into ~/.claude/rules (Claude loads those every session).
+# Safe to re-run.
 set -euo pipefail
-src="$(cd "$(dirname "$0")" && pwd)/skills"
-dest="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
-mkdir -p "$dest"
-for d in "$src"/*/; do
-  name="$(basename "$d")"
-  target="$dest/$name"
-  if [ -e "$target" ] && [ ! -L "$target" ]; then
-    echo "skip $name: $target exists and is not a symlink" >&2
-    continue
+root="$(cd "$(dirname "$0")" && pwd)"
+skills_dest="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+rules_dest="${CLAUDE_RULES_DIR:-$HOME/.claude/rules}"
+
+link() { # link <source> <target> <label>
+  if [ -e "$2" ] && [ ! -L "$2" ]; then
+    echo "skip $3: $2 exists and is not a symlink" >&2
+    return
   fi
-  ln -sfn "${d%/}" "$target"
-  echo "linked $name"
+  ln -sfn "$1" "$2"
+  echo "linked $3"
+}
+
+mkdir -p "$skills_dest" "$rules_dest"
+for d in "$root"/skills/*/; do
+  link "${d%/}" "$skills_dest/$(basename "$d")" "skill $(basename "$d")"
+done
+for f in "$root"/rules/*.md; do
+  [ -e "$f" ] || continue
+  link "$f" "$rules_dest/$(basename "$f")" "rule $(basename "$f")"
 done

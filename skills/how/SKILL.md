@@ -1,7 +1,6 @@
 ---
 name: how
-description: Explain how a subsystem, feature, or flow works in plain, mental-model-first terms for an early-career engineer, and optionally critique its design. Fans out to read-only Explore subagents for complex questions. Use for "how does X work", "walk me through Y", "explain this area", or "how is X structured, and critique it". For a saved, line-cited note with diagrams use code-map instead.
----
+description: Explain how a subsystem, feature, or flow works in plain, mental-model-first terms for an early-career engineer, and optionally critique its design. Fans out to read-only Explore subagents for complex questions. Use for "how does X work", "walk me through Y", "explain this area", or "how is X structured, and critique it".---
 
 # How (architectural explanation, optional critique)
 
