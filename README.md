@@ -44,4 +44,5 @@ then re-run the install script.
 - `wrap-up`: end-of-session note appended to a daily Obsidian note (set `WRAP_UP_DIR` to change the folder).
 - `code-map`: one-page, code-cited map of how any area of code works, with Mermaid flow diagrams.
 - `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
+- `no-excuses`: stops agents using comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work; audits diffs for them.
 - `how`: early-career-friendly explanation of how a subsystem works, with optional multi-critic design critique, using parallel Explore subagents. Adapted from poteto/how.
