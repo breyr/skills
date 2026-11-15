@@ -1,15 +1,41 @@
 # skills
 
-Personal Claude Code skills. Install on any machine:
+Personal Claude Code skills. Requires [git](https://git-scm.com).
+
+## Install
+
+### macOS / Linux
 
 ```
-git clone https://github.com/breyr/skills.git ~/skills && ~/skills/install.sh
+git clone https://github.com/breyr/skills.git ~/skills
+~/skills/install.sh
 ```
 
-Skills are symlinked into `~/.claude/skills`, so `git pull` updates them.
+### Windows (PowerShell)
 
-Add a skill: create `skills/<name>/SKILL.md` (with `name` and `description`
-frontmatter), re-run `install.sh`.
+```
+git clone https://github.com/breyr/skills.git $HOME\skills
+powershell -ExecutionPolicy Bypass -File $HOME\skills\install.ps1
+```
+
+This links each skill into `%USERPROFILE%\.claude\skills` with directory
+junctions (no admin rights needed). If you run Claude Code inside WSL, use
+the macOS / Linux steps from the WSL shell instead.
+
+## Update
+
+```
+git -C ~/skills pull        # Windows: git -C $HOME\skills pull
+```
+
+Existing skills update immediately because they are links. After pulling a
+**new** skill, re-run the install script to link it. Then restart Claude Code
+so it picks up new skills.
+
+## Add a skill
+
+Create `skills/<name>/SKILL.md` (with `name` and `description` frontmatter),
+then re-run the install script.
 
 ## Skills
 - `design-doc-review`: check a design doc against the codebase without redesigning it.
