@@ -43,3 +43,5 @@ then re-run the install script.
 - `design-doc-refresh`: rebuild context on an old design doc (timeline, code drift, citation check, defense quiz, status block).
 - `wrap-up`: end-of-session note appended to a daily Obsidian note (set `WRAP_UP_DIR` to change the folder).
 - `code-map`: one-page, code-cited map of how any area of code works, with Mermaid flow diagrams.
+- `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
+- `how`: early-career-friendly explanation of how a subsystem works, with optional multi-critic design critique, using parallel Explore subagents. Adapted from poteto/how.
