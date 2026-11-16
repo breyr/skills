@@ -97,3 +97,5 @@ Always-on agent rules (not skills). The install script symlinks each
 Docs for a rule live in `rules/<name>/`.
 - `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work.
 - `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
+- `create-learning-path`: milestone-based learning roadmap with practice checkpoints. Adapted from cursor/plugins `teaching`.
+- `run-learning-retrospective`: review progress after a milestone and adjust the plan. Adapted from cursor/plugins `teaching`.
