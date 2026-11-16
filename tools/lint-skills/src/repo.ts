@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { join, sep } from "node:path";
 import type { Repo, Skill, TextFile } from "./types.ts";
 
 function readText(root: string, path: string): TextFile | null {
@@ -11,7 +11,7 @@ function readText(root: string, path: string): TextFile | null {
 function filesUnder(dir: string): string[] {
   return readdirSync(dir, { recursive: true, withFileTypes: true })
     .filter((e) => e.isFile())
-    .map((e) => join(e.parentPath, e.name).slice(dir.length + 1))
+    .map((e) => join(e.parentPath, e.name).slice(dir.length + 1).split(sep).join("/"))
     .sort();
 }
 
