@@ -22,7 +22,7 @@ Report every such suppression to the user in your reply.
 
 ## Enforce with lint (so it does not rely on the agent's discipline)
 ESLint flat config; adjust to the repo's setup and ask before changing it.
-See "Adapting the ESLint rules to your project" in `docs/no-excuses.md` for how.
+See "Adapting the ESLint rules to your project" in https://github.com/breyr/skills/blob/main/docs/no-excuses.md for how.
 ```js
 // eslint.config.js (needs typescript-eslint; vitest plugin optional)
 {
