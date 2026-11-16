@@ -25,6 +25,8 @@
 - Only exception: I explicitly approved a deferral in this conversation and it
   is tracked. Cite the ticket in the comment, mark the line
   `excuse-ok: <ticket>`, and list it in your final reply.
+- In TypeScript or JavaScript, also follow `no-excuses/typescript.md` (the
+  suppression table).
 - Do not reword an excuse to dodge this rule. Do the work or tell me.
 - Delete test: if removing the comment would leave the code merely incomplete
   or hard to defend, it was an excuse.

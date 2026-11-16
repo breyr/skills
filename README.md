@@ -21,6 +21,8 @@ Update with `npx skills update`.
 ```
 mkdir -p ~/.claude/rules
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/no-excuses.md -o ~/.claude/rules/no-excuses.md
+mkdir -p ~/.claude/rules/no-excuses
+curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/no-excuses/typescript.md -o ~/.claude/rules/no-excuses/typescript.md
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/tdd.md -o ~/.claude/rules/tdd.md
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/scope.md -o ~/.claude/rules/scope.md
 ```
@@ -176,7 +178,7 @@ Around the edges of that flow:
 Always-on agent rules (not skills). The install script symlinks each
 `rules/*.md` and each docs directory `rules/<name>/` into `~/.claude/rules/`,
 which Claude Code loads every session.
-- `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work; a paragraph-long explanatory comment means fix the code instead.
+- `rules/no-excuses` (plus `rules/no-excuses/typescript.md` for TS/JS; human docs in [`docs/no-excuses.md`](docs/no-excuses.md)): agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work; a paragraph-long explanatory comment means fix the code instead.
 - `rules/scope`: search for an existing helper before writing one, and change only what was asked (no drive-by refactors, speculative features, or defensive code the types already rule out).
 - `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
 
