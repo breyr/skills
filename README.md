@@ -1,17 +1,44 @@
 # skills
 
-Personal Claude Code skills. Requires [git](https://git-scm.com).
+Personal Claude Code skills.
 
 ## Install
 
-### macOS / Linux
+### Skills with `npx skills` (no clone)
+
+```
+npx skills add breyr/skills                 # pick interactively
+npx skills add breyr/skills --skill teach   # one skill
+npx skills add breyr/skills -g              # global (~/.claude/skills) instead of the current project
+```
+
+Update with `npx skills update`.
+
+`npx skills` installs skills only. Rules are copied by hand into
+`~/.claude/rules` (create the folder if needed). Both rules are optional, but
+`tdd.md` expects the `unit-testing` skill to be installed.
+
+```
+mkdir -p ~/.claude/rules
+curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/no-excuses.md -o ~/.claude/rules/no-excuses.md
+curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/tdd.md -o ~/.claude/rules/tdd.md
+```
+
+Or copy the files from [`rules/`](rules) yourself. Re-run the `curl` commands to
+update a rule.
+
+### Clone and link
+
+Requires [git](https://git-scm.com). Links skills and rules, so `git pull` updates them.
+
+#### macOS / Linux
 
 ```
 git clone https://github.com/breyr/skills.git ~/skills
 ~/skills/install.sh
 ```
 
-### Windows (PowerShell)
+#### Windows (PowerShell)
 
 ```
 git clone https://github.com/breyr/skills.git $HOME\skills
