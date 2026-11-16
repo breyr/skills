@@ -6,13 +6,19 @@ ideas map to Jest and others. Check which the repo uses and match it.
 ## TypeScript
 - Do not test types. Use the compiler (and `expectTypeOf`-style checks only
   for a published library's public types).
-- Avoid `as any` / `as unknown as T` in tests to force a shape. Build valid
-  data with a small typed factory (`makeUser(overrides)`), so a type change
-  breaks the factory once, not every test.
+- Avoid `as any`, `as never`, and `as unknown as T` in tests to force a shape.
+  Build valid data with a small typed factory (`makeUser(overrides)`, or
+  `Object.assign(new ItemTransaction(), {...})` for a class), so a type change
+  breaks the factory once, not every test. Do not cast to reach a protected or
+  private method (`vi.spyOn(worker as unknown as {...}, 'callFLxApi')`): test
+  through the public method, or inject the dependency that the method calls.
 - Prefer injecting dependencies (function args, constructor params) over
   module mocking (`vi.mock` / `jest.mock`). Module mocks hide coupling and
   break on harmless file moves. Allowed for things you do not own and cannot
-  inject: a third-party SDK, `Date`, env/globals.
+  inject: a third-party SDK, `Date`, env/globals. A mock needed in two or more
+  test files lives in one shared helper (for example `tests/testUtils/`), one
+  helper per module, named after what it fakes. Import it; do not copy the
+  block.
 - Network: stand in at the HTTP layer (e.g. MSW) so the real fetch/client
   code runs, instead of mocking your own API wrapper.
 - Time: fake timers for debounce/timeouts/dates (`vi.useFakeTimers()` +
@@ -58,4 +64,6 @@ ideas map to Jest and others. Check which the repo uses and match it.
 - `act(...)` sprinkled manually (usually a missing `await`).
 - `expect(fn).toHaveBeenCalledTimes(n)` as the only assertion.
 - Snapshot of a whole rendered tree.
-- `as any` to build test data.
+- `as any`, `as never`, or `as unknown as T` to build test data.
+- `as unknown as {...}` to spy on or call a protected or private method.
+- The same `vi.mock(...)` block copied into two or more test files.

@@ -28,7 +28,10 @@ To add a language, create `references/<language>.md` and add a line above.
 
 ## Workflow (Write)
 1. Read the code under test and the existing tests, runner config, setup
-   files, and helpers. Match their conventions.
+   files, and helpers. Match their conventions. Before writing any mock,
+   search the repo's test helper folder and the existing mocks of the same
+   module, and reuse what exists instead of writing a second copy. A mock used
+   in two or more test files moves to one shared helper.
 2. Tell the user what you will test and what you are deliberately skipping,
    and why, *before* writing.
 3. Write the tests. Run them.
