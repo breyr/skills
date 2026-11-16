@@ -38,9 +38,10 @@ Open every `file:line` in Current behavior. Report each as OK, MOVED
 the doc edits as a list; apply them only if the user agrees.
 
 ## Step 5: Conformance
-Run the design-doc-review procedure against the current code (restate,
-findings as FACTUAL ERROR / BLOCKER / SUGGESTION, drift check). Do not
-redesign.
+Invoke the `design-doc-review` skill with the Skill tool, against the
+current code. Pass it the doc and say every decision in it is locked, so it
+checks conformance only. Your Step 1 recap stands in for its restate step.
+Do not redesign.
 
 ## Step 6: Defense prep
 - Ask 5 hard questions a reviewer would ask, one at a time. Let the user

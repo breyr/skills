@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Pause safely (stop so someone else can resume)
 
-Adapted from pstack `pause-safely` (https://github.com/cursor/plugins/tree/main/pstack/skills/poteto-mode/playbooks/pause-safely.md), reworked for Claude Code. Different from `wrap-up`: that writes a human note to Obsidian; this preserves the work and a note an agent can resume from. This skill offers to run `wrap-up` at the end.
+Different from `wrap-up`: that writes a human note to a daily log; this preserves the work and a note an agent can resume from. This skill offers to run `wrap-up` at the end.
 
 Only when the user explicitly asks to pause. "Keep going", "going to bed, keep
 going", or "don't stop" mean do not pause.
@@ -34,7 +34,7 @@ going", or "don't stop" mean do not pause.
    - gotchas and decisions already made.
    If a plan or work log already exists, point to it instead of copying.
 5. **Offer `wrap-up`.** Ask once whether to also log this to the daily
-   Obsidian note. If yes, run the `wrap-up` skill and give it the note's
+   note. If yes, run the `wrap-up` skill and give it the note's
    intent, done, and next steps so nothing is written twice. If no, stop.
 
 ## Reply
@@ -48,3 +48,7 @@ Present it as a pause, not a final report:
 ## Rules
 - Do not claim work is finished that is not.
 - Do not discard or reset anything to make the tree clean.
+
+## Credit
+
+Adapted from [pstack `pause-safely`](https://github.com/cursor/plugins/tree/main/pstack/skills/poteto-mode/playbooks/pause-safely.md) by Lauren Tan, reworked for Claude Code.

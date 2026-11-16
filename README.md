@@ -55,42 +55,89 @@ the macOS / Linux steps from the WSL shell instead.
 ## Update
 
 ```
-git -C ~/skills pull        # Windows: git -C $HOME\skills pull
+git -C ~/skills pull && ~/skills/install.sh   # Windows: git -C $HOME\skills pull; then re-run install.ps1
 ```
 
-Existing skills update immediately because they are links. After pulling a
-**new** skill, re-run the install script to link it. Then restart Claude Code
-so it picks up new skills.
+Existing skills update immediately because they are links; re-running the
+install script links any **new** skill. Restart Claude Code afterward so it
+picks up new skills. If you installed with `npx skills`, use
+`npx skills update` instead. Rules copied with `curl` are updated by re-running
+the `curl` commands.
 
 ## Add a skill
 
-Create `skills/<name>/SKILL.md` (with `name` and `description` frontmatter),
-then re-run the install script. For an always-on rule, add `rules/<name>.md`
-(no frontmatter needed) and re-run the script.
+1. Create `skills/<name>/SKILL.md` with `name` (kebab-case, same as the
+   directory) and `description` frontmatter. Add `disable-model-invocation: true`
+   if it should only run when you type `/<name>`.
+2. Add a bullet for it under `## Skills` below, formatted as `- `<name>`: description`.
+3. Run `npm run lint:skills`, then re-run the install script.
+
+For an always-on rule, add `rules/<name>.md` (no frontmatter needed) and
+re-run the script.
+
+## Which skill do I use?
+
+| I want to... | Use | How it runs |
+| --- | --- | --- |
+| Sharpen a rough prompt before sending it | `sharpen` | `/sharpen` only |
+| Check the agent understood me before it starts | `in-your-own-words` | `/in-your-own-words` only |
+| Know how an area works | `how` | auto or `/how` |
+| Know why it was built that way | `why` | auto or `/why` |
+| Really understand a change (how + why) | `teach` | auto or `/teach` |
+| Design a feature at the code level | `architect` | auto or `/architect` |
+| Break big work into verifiable steps | `plan-chunks` | auto or `/plan-chunks` |
+| Write a design doc | `design-doc-draft` | auto or `/design-doc-draft` |
+| Check a design doc against the code | `design-doc-review` | auto or `/design-doc-review` |
+| Get ready to defend an old design doc | `design-doc-refresh` | auto or `/design-doc-refresh` |
+| Know what a change could break | `blast-radius` | auto or `/blast-radius` |
+| Write, review, or trim tests | `unit-testing` | auto or `/unit-testing` |
+| Try to break a finished change | `interrogate` | auto or `/interrogate` |
+| Catch up after time away | `catchup` | `/catchup` only |
+| Stop mid-task so a fresh agent can resume | `pause-safely` | `/pause-safely` only; commits and writes a note |
+| Log where I am for tomorrow | `wrap-up` | auto or `/wrap-up`; writes a note after you approve |
+| Plan or review a multi-session learning goal | `create-learning-path`, `run-learning-retrospective` | auto or by name |
+
+"Auto" means Claude can load the skill when your request matches its
+description. "Only" skills are never loaded on their own.
 
 ## Skills
-- `design-doc-review`: check a design doc against the codebase without redesigning it.
-- `design-doc-draft`: idea -> interview -> user's decisions -> short design doc with cited current behavior.
-- `design-doc-refresh`: rebuild context on an old design doc (timeline, code drift, citation check, defense quiz, status block).
-- `wrap-up`: end-of-session note appended to a daily Obsidian note (set `WRAP_UP_DIR` to change the folder).
-- `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
-- `how`: early-career-friendly explanation of how a subsystem works, with optional multi-critic design critique, using parallel Explore subagents. Adapted from poteto/how.
+
+### Understand
+- `how`: early-career-friendly explanation of how a subsystem works, with optional multi-critic design critique, using parallel Explore subagents.
 - `why`: why something was built this way, answered from commits and PRs, not the code.
 - `teach`: layered, plain-English explanation of a change or subsystem; runs `how` and `why` together.
-- `blast-radius`: what a change could break outside the diff, with the safety claim proven by running code.
+
+### Design and plan
 - `architect`: settle the shape before writing it: sketch callers, types, signatures, and module boundaries with unimplemented bodies, compare structurally different designs, and stop before implementing. Writes no files.
 - `plan-chunks`: break work too big for one diff into small ordered units, each with its own check, dependencies, and parallel groups. Plans only; stops before implementing.
-- `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
-- `in-your-own-words`: restate the goal and problem before any work (user-invoked).
-- `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task (user-invoked).
+- `design-doc-draft`: idea -> interview -> user's decisions -> short design doc with cited current behavior.
+- `design-doc-review`: check a design doc against the codebase without redesigning it.
+- `design-doc-refresh`: rebuild context on an old design doc (timeline, code drift, citation check, defense quiz, status block).
 
+### Verify
+- `blast-radius`: what a change could break outside the diff, with the safety claim proven by running code.
+- `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
+- `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
+
+### Prompting (user-invoked)
+- `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task.
+- `in-your-own-words`: restate the goal and problem before any work.
+
+### Sessions
+- `wrap-up`: end-of-session note appended to a daily note. Asks where to save, defaulting to `$WRAP_UP_DIR` or `~/Documents/Projects/Work Log`.
 - `pause-safely`: stop cleanly on request (one `wip:` commit plus a resume note in `~/.claude/resume/`) so a fresh agent can continue (user-invoked).
 - `catchup`: catch up after time away: what changed, plus every decision only you can make, with a recommended pick (user-invoked, read-only).
-- `create-learning-path`: milestone-based learning roadmap with practice checkpoints. Adapted from cursor/plugins `teaching`.
-- `run-learning-retrospective`: review progress after a milestone and adjust the plan. Adapted from cursor/plugins `teaching`.
 
+### Learning
+- `create-learning-path`: milestone-based learning roadmap with practice checkpoints.
+- `run-learning-retrospective`: review progress after a milestone and adjust the plan.
+
+## Credits
 `why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
+`how` is adapted from [poteto/how](https://github.com/poteto/how), and the two
+learning skills from the [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching)
+plugin (MIT). Each skill's own `## Credit` section links its source.
 
 ## Example workflow
 

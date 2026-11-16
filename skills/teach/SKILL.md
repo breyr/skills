@@ -5,8 +5,6 @@ description: Build a plain, layered explanation of a change or subsystem so the 
 
 # Teach (understanding, not a summary)
 
-Adapted from pstack `teach` (https://github.com/cursor/plugins/tree/main/pstack/skills/teach), reworked for Claude Code.
-
 Goal: the user can explain it back. This is different from `how`, which
 documents mechanics. Here you choose what matters for this person.
 
@@ -33,3 +31,7 @@ documents mechanics. Here you choose what matters for this person.
 ## Rules
 - Read-only. Change nothing.
 - If the user's mental model is wrong, correct it directly and kindly.
+
+## Credit
+
+Adapted from [pstack `teach`](https://github.com/cursor/plugins/tree/main/pstack/skills/teach) by Lauren Tan, reworked for Claude Code.

@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 # In your own words (play it back first)
 
-Adapted from pstack `in-your-own-words` (https://github.com/cursor/plugins/tree/main/pstack/skills/in-your-own-words), reworked for Claude Code.
-
 Before any work, reply with:
 1. **Goal:** what the user wants to be true when this is done, in one or two
    sentences, in your words, not theirs.
@@ -20,3 +18,7 @@ This skill produces a playback, not work. Do not read code, plan, edit
 files, run commands, or start the task. Do not flatter or pad. After the
 reply, stop and wait. Begin the work only after the user confirms or
 corrects the restatement; pushback sends you back to a new playback.
+
+## Credit
+
+Adapted from [pstack `in-your-own-words`](https://github.com/cursor/plugins/tree/main/pstack/skills/in-your-own-words) by Lauren Tan, reworked for Claude Code.

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Catchup (catch me up, tell me what needs me)
 
-Adapted from pstack `ketchup` (renamed catchup) (https://github.com/cursor/plugins/tree/main/pstack/skills/ketchup), reworked for Claude Code. For rebuilding context across many past sessions, this is not the tool; this is for the current session.
+For rebuilding context across many past sessions, this is not the tool; this is for the current session.
 
 Read-only. Change no code, start no jobs, post nothing.
 
@@ -33,3 +33,7 @@ Read-only. Change no code, start no jobs, post nothing.
 - Visuals only when they add something: a small Mermaid diagram or chart from
   real facts, never repeating the text.
 - Plain English; no filler, no labels like "Important".
+
+## Credit
+
+Adapted from [pstack `ketchup`](https://github.com/cursor/plugins/tree/main/pstack/skills/ketchup) (renamed `catchup`) by Lauren Tan, reworked for Claude Code.

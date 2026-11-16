@@ -5,8 +5,6 @@ description: Explain why something was built the way it was, answering from comm
 
 # Why (answer from the record, not the code)
 
-Adapted from pstack `why` (https://github.com/cursor/plugins/tree/main/pstack/skills/why), reworked for Claude Code.
-
 The code shows what exists. The record shows what the authors intended.
 Answer from the record.
 
@@ -34,3 +32,7 @@ Answer from the record.
 - Read-only. Change nothing.
 - If the code and the record disagree, report both and say which is newer.
 - Questions about how it behaves at runtime belong to `how`; use that.
+
+## Credit
+
+Adapted from [pstack `why`](https://github.com/cursor/plugins/tree/main/pstack/skills/why) by Lauren Tan, reworked for Claude Code.

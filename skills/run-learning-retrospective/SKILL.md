@@ -3,8 +3,6 @@ name: run-learning-retrospective
 description: Evaluate learning progress, identify blockers, and adjust the learning plan. Use after the user finishes a milestone or says their learning plan needs adjusting.
 ---
 
-Adapted from cursor/plugins `teaching` (https://github.com/cursor/plugins/tree/main/teaching, MIT).
-
 # Run a learning retrospective
 
 ## Trigger
@@ -28,3 +26,7 @@ Learner completed a milestone and needs data-driven adjustment to their plan.
 - Progress retrospective
 - Updated learning plan
 - Next milestone definition
+
+## Credit
+
+Adapted from [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching) (MIT), reworked for Claude Code.

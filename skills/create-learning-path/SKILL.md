@@ -3,8 +3,6 @@ name: create-learning-path
 description: Build a personalized learning roadmap with milestones and practice checkpoints. Use when the user wants to learn a topic over multiple sessions or asks for a study plan, roadmap, or curriculum.
 ---
 
-Adapted from cursor/plugins `teaching` (https://github.com/cursor/plugins/tree/main/teaching, MIT).
-
 # Create a learning path
 
 ## Trigger
@@ -34,3 +32,7 @@ Building capability in a topic over multiple sessions.
 - Week-by-week or milestone-based plan
 - Practice assignments
 - Progress review rubric
+
+## Credit
+
+Adapted from [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching) (MIT), reworked for Claude Code.

@@ -5,7 +5,7 @@ description: Break non-trivial work into small ordered units that each end in a 
 
 # Plan chunks (small units, each provable)
 
-Adapted from pstack `principle-sequence-verifiable-units` and the `multi-phase-plan` and `feature` playbooks (https://github.com/cursor/plugins/tree/main/pstack/skills), reworked for Claude Code. `architect` settles the shape of the code; this skill settles the order of the work.
+`architect` settles the shape of the code; this skill settles the order of the work.
 
 This skill produces a plan, not code. Do not create or edit files, branches, or commits. The plan lives in the reply. Implementation is a separate step the user starts after approving it.
 
@@ -78,3 +78,7 @@ Size labels in the table mean what it takes to verify and review:
 - More than about 8 units means the work is a program: suggest
   `design-doc-draft` or splitting it, instead of a longer list.
 - When execution starts, finish and verify one unit before starting the next.
+
+## Credit
+
+Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills) `principle-sequence-verifiable-units` and the `multi-phase-plan` and `feature` playbooks by Lauren Tan, reworked for Claude Code.

@@ -5,8 +5,6 @@ description: Find what a code change could break outside the diff, and prove or 
 
 # Blast radius (what else does this touch?)
 
-Adapted from pstack `blast-radius` (https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius), reworked for Claude Code.
-
 A convincing writeup is not evidence. Find the fact the change's safety
 depends on, then test it.
 
@@ -43,3 +41,7 @@ fact's rung.
 - Read-only apart from throwaway scripts in the scratchpad.
 - Remove private names, hosts, and secrets before anything is shared.
 - Pairs with `unit-testing` when the answer is "add this test first".
+
+## Credit
+
+Adapted from [pstack `blast-radius`](https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius) by Lauren Tan, reworked for Claude Code.

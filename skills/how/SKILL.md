@@ -5,8 +5,6 @@ description: Explain how a subsystem, feature, or flow works in plain, mental-mo
 
 # How (architectural explanation, optional critique)
 
-Adapted from poteto/how, reworked for Claude Code subagents.
-
 Audience: an early-career engineer (about a year or two in) new to this
 area. Goal: a mental model they can build on, not annotated source. Explain
 the why behind design choices, and define patterns or jargon the first time
@@ -62,3 +60,7 @@ or tradeoffs). Critique always explains first.
   but trust the code when they disagree, and say so.
 - Do not fan out for simple questions: it costs more and adds nothing.
 - Stuck twice on the same approach: stop and say what you know and don't.
+
+## Credit
+
+Adapted from [poteto/how](https://github.com/poteto/how), reworked for Claude Code subagents.

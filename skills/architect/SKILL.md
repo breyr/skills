@@ -5,7 +5,7 @@ description: Settle the shape of non-trivial work before writing it. Sketch call
 
 # Architect (design only, no implementation)
 
-Adapted from pstack `architect` (https://github.com/cursor/plugins/tree/main/pstack/skills/architect), reworked for Claude Code. Lighter than `design-doc-draft`: a code-level design in the reply, no document.
+Lighter than `design-doc-draft`: a code-level design in the reply, no document.
 
 This skill produces a design, not code. Do not create or edit files, scaffold a project, write stubs or tests, or run the build. Sketches live in the reply as code blocks and stay there. Implementation is a separate step the user starts after approving the design.
 
@@ -37,3 +37,7 @@ This skill produces a design, not code. Do not create or edit files, scaffold a 
 6. **Decisions for you:** open questions, each with a default.
 
 Leave the repo untouched.
+
+## Credit
+
+Adapted from [pstack `architect`](https://github.com/cursor/plugins/tree/main/pstack/skills/architect) by Lauren Tan, reworked for Claude Code.
