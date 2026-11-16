@@ -5,7 +5,7 @@ description: Adversarial review that keeps only findings a run proves. Several i
 
 # Interrogate (break it, prove it)
 
-Adapted from pstack `interrogate` (https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate), reworked for Claude Code. Different from `code-review`: nothing is reported unless a command shows the failure.
+Different from `code-review`: nothing is reported unless a command shows the failure.
 
 ## Steps
 1. **Frame.** Scope is what the user names, else the branch diff against its
@@ -29,3 +29,7 @@ Adapted from pstack `interrogate` (https://github.com/cursor/plugins/tree/main/p
 - Adversaries disagree by design; do not vote or average, just verify.
 - For "what else does this touch" questions without a break attempt, use
   `blast-radius` instead.
+
+## Credit
+
+Adapted from [pstack `interrogate`](https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

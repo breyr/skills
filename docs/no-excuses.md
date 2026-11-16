@@ -6,17 +6,22 @@ task; this should apply to every edit, so it is a short instructions file.
 
 ## Layout
 ```
-rules/no-excuses.md          the always-on rule (this is what gets installed)
-rules/no-excuses/README.md   this file
-rules/no-excuses/typescript.md   TS/JS suppression table and ESLint rules (reference)
+rules/no-excuses.md              the always-on rule
+rules/no-excuses/typescript.md   TS/JS suppression table and ESLint rules, also always on
+docs/no-excuses.md               this file (human docs, never loaded)
 ```
-Only top-level `rules/*.md` files are installed, so the README and
-`typescript.md` are never loaded as rules.
+Everything under `rules/` is loaded every session: Claude Code reads rule
+folders recursively, so the install script links `rules/no-excuses/` too. Keep
+human-only docs out of `rules/`, or they would be loaded as rules.
 
 ## Install
-Run the repo's install script. It symlinks `rules/no-excuses.md` into
-`~/.claude/rules/`, which Claude Code loads in every session, in every repo,
-with no pasting. It stays private to you (not committed to any project).
+Run the repo's install script. It symlinks `rules/no-excuses.md` and the
+`rules/no-excuses/` directory into `~/.claude/rules/`, which Claude Code loads
+in every session, in every repo, with no pasting. It stays private to you (not
+committed to any project).
+
+The `curl` install in the main README fetches both files too, so the
+TypeScript rules apply on every install route.
 
 To share it with a team instead, copy the text into the repo's `AGENTS.md`.
 Claude Code reads `AGENTS.md` (v2.1.277+) only when no `CLAUDE.md` exists in the

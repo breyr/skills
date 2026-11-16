@@ -1,13 +1,14 @@
 ---
 name: unit-testing
-description: Write, review, or plan unit tests with language-agnostic best practices (behavior over implementation, minimal mocking, no trivial tests), plus per-language rule files. Also analyzes how a planned change affects existing tests and recommends updates without breaking existing behavior. Use when writing tests, reviewing or trimming tests, deciding what to test, learning to test well, or before changing code that has tests. Also use for TDD, a failing or regression test for a bug fix, red/green runs, characterization tests, and test fixtures.
+description: Write, review, or plan unit tests: behavior over implementation, minimal mocking, no trivial tests, with per-language rule files. Also analyzes how a planned change affects existing tests. Use when writing, reviewing, or trimming tests, deciding what to test, TDD, regression tests for a bug fix, or before changing code that has tests.
 ---
 
 # Unit testing (agnostic core, language rules on demand)
 
 Goal: tests that fail when behavior breaks and stay green when code is
 refactored. The user is learning, so for each test or finding, state the
-principle behind it in one line.
+principle behind it in one line. The `tdd` rule (if installed) requires
+loading this skill before any test is written.
 
 ## Pick a mode
 - **Write**: new tests for code. Follow the workflow below.
@@ -24,8 +25,6 @@ Detect the language from the files in play, then read the matching file in
   to draft `references/<language>.md` from what you learn in the repo.
 
 To add a language, create `references/<language>.md` and add a line above.
-Cover: runner and idioms, how to mock at the boundary, async and time,
-parametrized tests, naming and file layout, language-specific smells.
 
 ## Workflow (Write)
 1. Read the code under test and the existing tests, runner config, setup
@@ -33,10 +32,9 @@ parametrized tests, naming and file layout, language-specific smells.
 2. Tell the user what you will test and what you are deliberately skipping,
    and why, *before* writing.
 3. Write the tests. Run them.
-4. Prove they can fail: break the code on purpose (flip a condition) and
+4. Prove they can fail: break the code on purpose (flip a condition),
    confirm a test goes red, then restore it. A test that cannot fail is noise.
-   Skip this when the code does not exist yet or the bug is not fixed yet
-   (TDD, or the `tdd` rule): the red run you already showed is the proof.
+   Skip this under TDD, where the red run before the fix is the proof.
 5. Report: covered, skipped, what was mocked and why.
 
 ## What to test
@@ -80,15 +78,12 @@ Prefer, in order:
   small named factory, not a distant shared fixture.
 - No logic in tests: no loops, ifs, or expected values computed with the
   same logic as the code. Hard-code expectations.
-- Independent, order-agnostic, deterministic (control time, randomness, IDs).
-- No datetime-based (or random) values in test data that an assertion depends
-  on: no `Date.now()`/`new Date()` IDs, timestamps, or "now"-derived
-  expectations. Use fixed literals or a frozen/injected clock and a
-  deterministic ID generator, so the expected value is hard-coded and the
-  test gives the same result on any day.
-- Temporary IDs the assertions never read (e.g. `crypto.randomUUID()`) are
-  fine, but they must never be persisted to a database. Anything written to a
-  DB uses fixed, known IDs so it can be asserted on and cleaned up.
+- Independent, order-agnostic, deterministic.
+- Test data is fixed: no `Date.now()`, `new Date()`, or random values in
+  anything an assertion depends on; freeze or inject the clock. Throwaway
+  random IDs the test never reads are fine, but never persist one to a
+  database. DB rows use fixed, known IDs so they can be asserted on and
+  cleaned up.
 - Parametrize the same behavior over many inputs; don't copy-paste.
 - Fast. A test needing a real browser, server, or database is another kind
   of test: say so and keep it separate.

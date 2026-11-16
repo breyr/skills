@@ -121,6 +121,21 @@ test("an installer that does not link rule entries is flagged", () => {
   assert.match(r.out, /rule one was not linked/);
 });
 
+test("an installer that leaves dead links to removed skills is flagged", () => {
+  const noPruneInstaller = [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    'root="$(cd "$(dirname "$0")" && pwd)"',
+    'mkdir -p "$CLAUDE_SKILLS_DIR" "$CLAUDE_RULES_DIR"',
+    'for d in "$root"/skills/*/; do ln -sfn "${d%/}" "$CLAUDE_SKILLS_DIR/$(basename "$d")"; done',
+    'for f in "$root"/rules/*; do ln -sfn "${f%/}" "$CLAUDE_RULES_DIR/$(basename "$f")"; done',
+    "",
+  ].join("\n");
+  const r = lint((d) => write(d, "install.sh", noPruneInstaller));
+  expectViolation(r, "install.sh", "installer-links");
+  assert.match(r.out, /dead link .* was not removed/);
+});
+
 test("name that is not kebab-case is flagged as such", () => {
   const r = lint((d) => edit(d, "skills/alpha/SKILL.md", "name: alpha", "name: Alpha"));
   expectViolation(r, "skills/alpha/SKILL.md", "frontmatter-name");

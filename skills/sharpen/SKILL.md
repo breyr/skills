@@ -6,8 +6,6 @@ disable-model-invocation: true
 
 # Sharpen (deeper, not bigger)
 
-Adapted from pstack `sharpen` (https://github.com/cursor/plugins/tree/main/pstack/skills/sharpen), reworked for Claude Code.
-
 Goal: a better version of the user's prompt. Do not do the task itself.
 
 ## Steps
@@ -27,3 +25,7 @@ Answer these four briefly, for the draft prompt:
    prototype and a recommendation from the results. Product or preference
    choices stay with the user.
 3. Two or three lines on what you changed and why.
+
+## Credit
+
+Adapted from [pstack `sharpen`](https://github.com/cursor/plugins/tree/main/pstack/skills/sharpen) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.
