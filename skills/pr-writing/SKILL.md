@@ -1,5 +1,5 @@
 ---
-name: write-commit-pr
+name: pr-writing
 description: Write a commit message, PR title, or PR description from the real diff, following the repo's own conventions when it has them. Use when asked to commit, write or fix a commit message, open or describe a pull request, or write a PR summary. Checks every claim against the diff before finalizing.
 ---
 
