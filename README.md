@@ -15,13 +15,14 @@ npx skills add breyr/skills -g              # global (~/.claude/skills) instead 
 Update with `npx skills update`.
 
 `npx skills` installs skills only. Rules are copied by hand into
-`~/.claude/rules` (create the folder if needed). Both rules are optional, but
+`~/.claude/rules` (create the folder if needed). All rules are optional, but
 `tdd.md` expects the `unit-testing` skill to be installed.
 
 ```
 mkdir -p ~/.claude/rules
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/no-excuses.md -o ~/.claude/rules/no-excuses.md
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/tdd.md -o ~/.claude/rules/tdd.md
+curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/scope.md -o ~/.claude/rules/scope.md
 ```
 
 Or copy the files from [`rules/`](rules) yourself. Re-run the `curl` commands to
@@ -125,7 +126,8 @@ Around the edges of that flow:
 Always-on agent rules (not skills). The install script symlinks each
 `rules/*.md` and each docs directory `rules/<name>/` into `~/.claude/rules/`,
 which Claude Code loads every session.
-- `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work.
+- `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work; a paragraph-long explanatory comment means fix the code instead.
+- `rules/scope`: search for an existing helper before writing one, and change only what was asked (no drive-by refactors, speculative features, or defensive code the types already rule out).
 - `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
 
 ## Checks
