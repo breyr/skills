@@ -32,4 +32,4 @@ Different from `code-review`: nothing is reported unless a command shows the fai
 
 ## Credit
 
-Adapted from [pstack `interrogate`](https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `interrogate`](https://github.com/cursor/plugins/tree/main/pstack/skills/interrogate) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

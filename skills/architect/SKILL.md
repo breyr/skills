@@ -40,4 +40,4 @@ Leave the repo untouched.
 
 ## Credit
 
-Adapted from [pstack `architect`](https://github.com/cursor/plugins/tree/main/pstack/skills/architect) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `architect`](https://github.com/cursor/plugins/tree/main/pstack/skills/architect) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

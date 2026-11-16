@@ -34,21 +34,21 @@ explain the tradeoffs neutrally and let them choose.
 Hard cap: 2 pages (more only if the user says the risk justifies it).
 Use exactly these sections, in this order:
 
-0. **Status block** at the very top (update it whenever work stops):
+1. **Status block** at the very top (update it whenever work stops):
    Where I am / Decided / Open questions / Next step / Last verified
    against code (date or commit).
-1. **Summary**: problem, approach in 3 sentences, key risks.
-2. **Decisions**: the user's ADR-style entries, verbatim-ish.
-3. **Current behavior**: <=15 lines, a flow. Every claim cites `file:line`
+2. **Summary**: problem, approach in 3 sentences, key risks.
+3. **Decisions**: the user's ADR-style entries, verbatim-ish.
+4. **Current behavior**: <=15 lines, a flow. Every claim cites `file:line`
    (and function name). No citation = cut it or move to "Not verified".
    Do not infer from names or comments alone. End with `Not verified:`
    listing anything unconfirmed. For ports, add a "Must preserve" checklist
    including quirks.
-4. **Change**: components, files touched, data/schema changes, interfaces
+5. **Change**: components, files touched, data/schema changes, interfaces
    and signatures. Reference Current behavior instead of restating it.
-5. **Flow**: happy path and failure paths.
-6. **Out of scope**.
-7. **Test approach**: what would hurt if it broke and how we'd know. Scale
+6. **Flow**: happy path and failure paths.
+7. **Out of scope**.
+8. **Test approach**: what would hurt if it broke and how we'd know. Scale
    the count to the change, each test justified in one line: a small,
    contained change gets 3 to 5; a typical feature with a few branches or
    failure paths, 6 to 10; a cross-cutting or high-risk change (data

@@ -81,4 +81,4 @@ Size labels in the table mean what it takes to verify and review:
 
 ## Credit
 
-Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills) `principle-sequence-verifiable-units` and the `multi-phase-plan` and `feature` playbooks by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack/skills) `principle-sequence-verifiable-units` and the `multi-phase-plan` and `feature` playbooks by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

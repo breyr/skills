@@ -35,4 +35,4 @@ Answer from the record.
 
 ## Credit
 
-Adapted from [pstack `why`](https://github.com/cursor/plugins/tree/main/pstack/skills/why) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `why`](https://github.com/cursor/plugins/tree/main/pstack/skills/why) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

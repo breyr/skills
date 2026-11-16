@@ -63,4 +63,4 @@ or tradeoffs). Critique always explains first.
 
 ## Credit
 
-Adapted from [poteto/how](https://github.com/poteto/how), reworked for Claude Code subagents.
+Adapted from [poteto/how](https://github.com/poteto/how) by Lauren Tan (MIT), reworked for Claude Code subagents. See `NOTICE` in the repo root.

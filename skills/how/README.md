@@ -37,19 +37,19 @@ references/critique-rubric.md    six lenses the critics review against
   Mermaid, only where they clarify a flow.
 
 ## Where the ideas come from
-- **Structure and workflow** (explain/critique modes, parallel explorers,
-  synthesis, `references/` prompt files, the critique rubric's six lenses):
-  adapted from [poteto/how](https://github.com/poteto/how), a Cursor plugin.
-  Written from summaries of its files, not copied; wording is original.
+Adapted from [poteto/how](https://github.com/poteto/how) by Lauren Tan (MIT;
+see `NOTICE` in the repo root). Checked against upstream:
+- **Kept**: explain and critique modes, parallel explorers, synthesis by the
+  lead, `references/` prompt files, the six critique lenses, and the Act on /
+  Consider / Noted / Dismissed triage.
 - **Changed for Claude Code**: Cursor-plugin packaging dropped; subagents
   expressed as the Agent tool with `Explore` and a `model` setting; critics
-  limited to Claude models (the original used Claude, Composer, and GPT);
-  synthesis moved into the main thread; the Act on / Consider / Noted /
-  Dismissed triage and the verify-before-acting rule were added here (the
-  source describes categories but I could not confirm its exact scheme).
-- **Audience level**: changed from senior to early-career on the user's
-  request.
+  limited to Claude models (upstream critics are Claude, Composer, and GPT,
+  and its explorers run on GPT); the rule to verify every "Act on" finding
+  against the cited code is added here.
+- **Audience level**: upstream targets a senior engineer; this version targets
+  early-career.
 
 ## Not done
-No reading of the upstream critic prompt, no support for non-Claude critics,
+No equivalent of upstream's `critic-prompt.md`, no support for non-Claude critics,
 no persistent output file.

@@ -28,4 +28,4 @@ Answer these four briefly, for the draft prompt:
 
 ## Credit
 
-Adapted from [pstack `sharpen`](https://github.com/cursor/plugins/tree/main/pstack/skills/sharpen) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `sharpen`](https://github.com/cursor/plugins/tree/main/pstack/skills/sharpen) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

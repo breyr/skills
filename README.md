@@ -139,7 +139,8 @@ description. "Only" skills are never loaded on their own.
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
 `how` is adapted from [poteto/how](https://github.com/poteto/how), and the two
 learning skills from the [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching)
-plugin (MIT). Each skill's own `## Credit` section links its source.
+plugin (MIT). Each skill's own `## Credit` section links its source, and [`NOTICE`](NOTICE)
+holds the upstream copyright notices and license text.
 
 ## Example workflow
 
@@ -184,3 +185,6 @@ which Claude Code loads every session.
 
 ## Checks
 `npm run lint:skills` checks every skill, rule, README entry and installer against these conventions (exit 1 on violations); `npm test` runs its tests. Needs Node 22.18 or newer.
+
+## License
+MIT, see [`LICENSE`](LICENSE). Adapted third-party material is covered by [`NOTICE`](NOTICE).

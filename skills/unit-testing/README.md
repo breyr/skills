@@ -38,24 +38,15 @@ loads the React rules).
   have the user write the next.
 
 ## Where the ideas come from
-Written from the author's (Claude's) general knowledge, not from a fetched
-source, so treat the attributions below as approximate and verify before
-quoting.
-- **Test behavior, not implementation; query like a user**: the Testing
-  Library guiding principles and Kent C. Dodds' writing.
-- **Prefer real or fake over mocks; mock at the boundary**: Martin Fowler's
-  "Mocks Aren't Stubs" and the classicist vs. mockist debate; MSW's
-  documentation for stubbing the network instead of your own client.
-- **Little logic in tests, readable over DRY, one behavior per test**: Google's
-  "Software Engineering at Google" testing chapters and Testing on the Toilet.
-- **Failing test first for a bug; break the code to prove a test can fail**:
-  common TDD and mutation-testing practice.
+The testing principles here are common practice, not taken from one source,
+and no external sources are cited.
 - **Stricter stance on module mocking** (prefer dependency seams over
   `vi.mock`): influenced by the `no-module-mocking` rule in
-  [dmmulroy/anti-slop](https://github.com/dmmulroy/anti-slop), softened to
-  allow exceptions for things you cannot inject.
+  [dmmulroy/anti-slop](https://github.com/dmmulroy/anti-slop) (MIT, Dillon
+  Mulroy), softened to allow exceptions for things you cannot inject. Ideas
+  only; no code or text copied.
 - **Impact mode** (baseline, classify, recommend, verify): original to this
-  repo; shaped by the request to analyze effects on existing tests.
+  repo.
 
 ## Opinions, not consensus
 Snapshots, module mocking, test-id use, and coverage as a goal are debated.

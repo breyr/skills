@@ -36,4 +36,4 @@ Read-only. Change no code, start no jobs, post nothing.
 
 ## Credit
 
-Adapted from [pstack `ketchup`](https://github.com/cursor/plugins/tree/main/pstack/skills/ketchup) (renamed `catchup`) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `ketchup`](https://github.com/cursor/plugins/tree/main/pstack/skills/ketchup) (renamed `catchup`) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

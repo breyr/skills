@@ -2,6 +2,8 @@
 # Symlink every skill in ./skills into ~/.claude/skills and every rule file
 # (./rules/*.md) and rule docs directory (./rules/<name>/) into ~/.claude/rules
 # (Claude loads those every session).
+# Also removes links into this repo whose target no longer exists (a skill or
+# rule that was renamed or deleted). Links to anywhere else are left alone.
 # Safe to re-run.
 set -euo pipefail
 root="$(cd "$(dirname "$0")" && pwd)"
@@ -17,7 +19,18 @@ link() { # link <source> <target> <label>
   echo "linked $3"
 }
 
+prune() { # prune <dest dir>: remove dead links that point into this repo
+  for l in "$1"/*; do
+    [ -L "$l" ] && [ ! -e "$l" ] || continue
+    case "$(readlink "$l")" in
+      "$root"/*) rm "$l"; echo "removed dead link $(basename "$l")" ;;
+    esac
+  done
+}
+
 mkdir -p "$skills_dest" "$rules_dest"
+prune "$skills_dest"
+prune "$rules_dest"
 for d in "$root"/skills/*/; do
   link "${d%/}" "$skills_dest/$(basename "$d")" "skill $(basename "$d")"
 done

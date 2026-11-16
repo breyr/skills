@@ -1,12 +1,24 @@
 # Link every skill in .\skills into ~\.claude\skills (directory junctions, no
 # admin rights needed) and every rule file (.\rules\*.md, file symlinks) and rule
 # docs directory (.\rules\<name>\, junctions) into ~\.claude\rules (Claude loads
-# those every session). Safe to re-run.
+# those every session). Also removes links into this repo whose target no longer
+# exists (a skill or rule that was renamed or deleted); other links are left
+# alone. Safe to re-run.
 # Rule files are file symlinks, which need Developer Mode or admin on Windows.
 $ErrorActionPreference = 'Stop'
 $skillsDest = if ($env:CLAUDE_SKILLS_DIR) { $env:CLAUDE_SKILLS_DIR } else { Join-Path $HOME '.claude\skills' }
 $rulesDest  = if ($env:CLAUDE_RULES_DIR)  { $env:CLAUDE_RULES_DIR }  else { Join-Path $HOME '.claude\rules' }
 New-Item -ItemType Directory -Force -Path $skillsDest, $rulesDest | Out-Null
+
+foreach ($dest in @($skillsDest, $rulesDest)) {
+  Get-ChildItem $dest -Force | Where-Object { $_.LinkType } | ForEach-Object {
+    $target = @($_.Target)[0]
+    if ($target -and $target.StartsWith($PSScriptRoot) -and -not (Test-Path -LiteralPath $target)) {
+      $_.Delete()  # removes only the dead link
+      Write-Host "removed dead link $($_.Name)"
+    }
+  }
+}
 
 Get-ChildItem -Directory (Join-Path $PSScriptRoot 'skills') | ForEach-Object {
   $target = Join-Path $skillsDest $_.Name

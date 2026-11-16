@@ -34,4 +34,4 @@ documents mechanics. Here you choose what matters for this person.
 
 ## Credit
 
-Adapted from [pstack `teach`](https://github.com/cursor/plugins/tree/main/pstack/skills/teach) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `teach`](https://github.com/cursor/plugins/tree/main/pstack/skills/teach) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

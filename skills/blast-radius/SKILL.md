@@ -44,4 +44,4 @@ fact's rung.
 
 ## Credit
 
-Adapted from [pstack `blast-radius`](https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `blast-radius`](https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

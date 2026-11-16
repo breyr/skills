@@ -21,4 +21,4 @@ corrects the restatement; pushback sends you back to a new playback.
 
 ## Credit
 
-Adapted from [pstack `in-your-own-words`](https://github.com/cursor/plugins/tree/main/pstack/skills/in-your-own-words) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `in-your-own-words`](https://github.com/cursor/plugins/tree/main/pstack/skills/in-your-own-words) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

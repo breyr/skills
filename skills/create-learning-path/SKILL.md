@@ -35,4 +35,4 @@ Building capability in a topic over multiple sessions.
 
 ## Credit
 
-Adapted from [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching) (MIT), reworked for Claude Code.
+Adapted from [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching) by Cursor (MIT), reworked for Claude Code. See `NOTICE` in the repo root.

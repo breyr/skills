@@ -51,4 +51,4 @@ Present it as a pause, not a final report:
 
 ## Credit
 
-Adapted from [pstack `pause-safely`](https://github.com/cursor/plugins/tree/main/pstack/skills/poteto-mode/playbooks/pause-safely.md) by Lauren Tan, reworked for Claude Code.
+Adapted from [pstack `pause-safely`](https://github.com/cursor/plugins/tree/main/pstack/skills/poteto-mode/playbooks/pause-safely.md) by Lauren Tan (MIT), reworked for Claude Code. See `NOTICE` in the repo root.
