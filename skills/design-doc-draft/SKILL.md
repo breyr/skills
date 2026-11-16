@@ -48,8 +48,12 @@ Use exactly these sections, in this order:
    and signatures. Reference Current behavior instead of restating it.
 5. **Flow**: happy path and failure paths.
 6. **Out of scope**.
-7. **Test approach**: what would hurt if it broke and how we'd know. Max N
-   tests, each justified in one line. Prefer behavior-level tests over
+7. **Test approach**: what would hurt if it broke and how we'd know. Scale
+   the count to the change, each test justified in one line: a small,
+   contained change gets 3 to 5; a typical feature with a few branches or
+   failure paths, 6 to 10; a cross-cutting or high-risk change (data
+   migrations, auth, money, shared contracts), up to about 15, grouped by
+   risk. Past that, split the work. Prefer behavior-level tests over
    mock-heavy unit tests. No tests for trivial code.
 
 ## Step 5: Defense prep
