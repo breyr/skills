@@ -186,5 +186,7 @@ which Claude Code loads every session.
 ## Checks
 `npm run lint:skills` checks every skill, rule, README entry and installer against these conventions (exit 1 on violations); `npm test` runs its tests. Needs Node 22.18 or newer.
 
+On Windows, the installer check creates symlinks. Without symlink permission (Developer Mode or an admin shell), `npm run lint:skills` exits 2 with `EPERM`.
+
 ## License
 MIT, see [`LICENSE`](LICENSE). Adapted third-party material is covered by [`NOTICE`](NOTICE).
