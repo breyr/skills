@@ -1,0 +1,10 @@
+{
+  "name": "my-skills",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "lint:skills": "node tools/lint-skills/src/cli.ts .",
+    "test": "node --test tools/lint-skills/test/*.test.ts"
+  }
+}

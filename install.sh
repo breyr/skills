@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Symlink every skill in ./skills into ~/.claude/skills and every rule file in
-# ./rules/*.md into ~/.claude/rules (Claude loads those every session).
+# Symlink every skill in ./skills into ~/.claude/skills and every rule file
+# (./rules/*.md) and rule docs directory (./rules/<name>/) into ~/.claude/rules
+# (Claude loads those every session).
 # Safe to re-run.
 set -euo pipefail
 root="$(cd "$(dirname "$0")" && pwd)"
@@ -20,7 +21,7 @@ mkdir -p "$skills_dest" "$rules_dest"
 for d in "$root"/skills/*/; do
   link "${d%/}" "$skills_dest/$(basename "$d")" "skill $(basename "$d")"
 done
-for f in "$root"/rules/*.md; do
-  [ -e "$f" ] || continue
-  link "$f" "$rules_dest/$(basename "$f")" "rule $(basename "$f")"
+for f in "$root"/rules/*; do
+  [ -d "$f" ] || [ "${f##*.}" = md ] || continue
+  link "${f%/}" "$rules_dest/$(basename "$f")" "rule $(basename "$f")"
 done

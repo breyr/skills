@@ -50,13 +50,15 @@ then re-run the install script. For an always-on rule, add `rules/<name>.md`
 - `why`: why something was built this way, answered from commits and PRs, not the code.
 - `teach`: layered, plain-English explanation of a change or subsystem; runs `how` and `why` together.
 - `blast-radius`: what a change could break outside the diff, with the safety claim proven by running code.
-- `architect`: sketch callers, types, and module shape (stub bodies) and compare designs before implementing.
+- `architect`: settle the shape before writing it: sketch callers, types, signatures, and module boundaries with unimplemented bodies, compare structurally different designs, and stop before implementing. Writes no files.
 - `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
 - `in-your-own-words`: restate the goal and problem before any work (user-invoked).
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task (user-invoked).
 
 - `pause-safely`: stop cleanly on request (one `wip:` commit plus a resume note in `~/.claude/resume/`) so a fresh agent can continue (user-invoked).
 - `catchup`: catch up after time away: what changed, plus every decision only you can make, with a recommended pick (user-invoked, read-only).
+- `create-learning-path`: milestone-based learning roadmap with practice checkpoints. Adapted from cursor/plugins `teaching`.
+- `run-learning-retrospective`: review progress after a milestone and adjust the plan. Adapted from cursor/plugins `teaching`.
 
 `why`, `teach`, `blast-radius`, `architect`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
@@ -72,7 +74,8 @@ One feature, start to finish. Each step names the skill and when to reach for it
    change. `why` for the history behind a strange constant or design. If you
    need it to really stick, `teach` combines both into a layered explanation.
 3. **Decide the shape.** Small or code-level change: `architect` (sketch
-   callers, types, signatures; compare two designs). Bigger or shared change:
+   callers, types, signatures; compare two designs; design only, you start
+   the implementation after approving it). Bigger or shared change:
    `design-doc-draft`, then `design-doc-review` against the codebase.
 4. **Check the risk.** Before editing, `blast-radius` on the planned change to
    find what else it touches and the one fact its safety depends on.
@@ -93,9 +96,10 @@ Around the edges of that flow:
 
 ## Rules
 Always-on agent rules (not skills). The install script symlinks each
-`rules/*.md` into `~/.claude/rules/`, which Claude Code loads every session.
-Docs for a rule live in `rules/<name>/`.
+`rules/*.md` and each docs directory `rules/<name>/` into `~/.claude/rules/`,
+which Claude Code loads every session.
 - `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work.
 - `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
-- `create-learning-path`: milestone-based learning roadmap with practice checkpoints. Adapted from cursor/plugins `teaching`.
-- `run-learning-retrospective`: review progress after a milestone and adjust the plan. Adapted from cursor/plugins `teaching`.
+
+## Checks
+`npm run lint:skills` checks every skill, rule, README entry and installer against these conventions (exit 1 on violations); `npm test` runs its tests. Needs Node 22.18 or newer.
