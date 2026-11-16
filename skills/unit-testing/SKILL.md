@@ -35,6 +35,8 @@ parametrized tests, naming and file layout, language-specific smells.
 3. Write the tests. Run them.
 4. Prove they can fail: break the code on purpose (flip a condition) and
    confirm a test goes red, then restore it. A test that cannot fail is noise.
+   Skip this when the code does not exist yet or the bug is not fixed yet
+   (TDD, or the `tdd` rule): the red run you already showed is the proof.
 5. Report: covered, skipped, what was mocked and why.
 
 ## What to test

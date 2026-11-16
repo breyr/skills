@@ -16,5 +16,7 @@ Before any work, reply with:
 4. **Unclear:** at most one question, with the default you will use if they
    do not answer.
 
-Do not read code, plan, or start work yet. Do not flatter or pad. Wait for
-the user to confirm or correct.
+This skill produces a playback, not work. Do not read code, plan, edit
+files, run commands, or start the task. Do not flatter or pad. After the
+reply, stop and wait. Begin the work only after the user confirms or
+corrects the restatement; pushback sends you back to a new playback.

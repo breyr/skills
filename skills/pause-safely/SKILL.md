@@ -17,7 +17,11 @@ going", or "don't stop" mean do not pause.
 2. **No irreversible actions.** Do not open a PR or push unless one was
    already open or the branch was already pushed.
 3. **Preserve the work.** If there are uncommitted edits, commit them as one
-   `wip:` commit on the current branch. If the code does not build or tests
+   `wip:` commit on the current branch. Never `git add -A` blindly: run
+   `git status` first, stage tracked changes plus only the untracked files
+   that are part of the work, and leave out anything secret-like (`.env*`,
+   keys, credentials, tokens) or generated (build output, logs). Say what you
+   left unstaged. If the code does not build or tests
    fail, say so in one line in the commit body. Never add a wip commit on
    `main` or the default branch: create a branch first and say so.
 4. **Write the resume note** to `~/.claude/resume/<repo>-<branch>.md`
@@ -29,7 +33,6 @@ going", or "don't stop" mean do not pause.
    - key files with `path:line`;
    - gotchas and decisions already made.
    If a plan or work log already exists, point to it instead of copying.
-
 5. **Offer `wrap-up`.** Ask once whether to also log this to the daily
    Obsidian note. If yes, run the `wrap-up` skill and give it the note's
    intent, done, and next steps so nothing is written twice. If no, stop.

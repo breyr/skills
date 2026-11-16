@@ -13,6 +13,12 @@
   `as any`. Fix the cause.
 - Delete commented-out code. No comments that narrate changes ("added X") or
   restate the code.
+- A comment longer than about two lines that explains what code does or how
+  it works means the code is the problem. Do not write the paragraph: rename,
+  extract a well-named function, simplify the logic, or restructure until the
+  code reads on its own. A long comment is allowed only for a constraint the
+  code cannot express (a spec, a third-party quirk, a measured result), with
+  the evidence linked.
 - Comments are for why: a real constraint with evidence (spec, ticket,
   measured result), and docs on public APIs. Update or delete a comment when
   you change the code it describes.

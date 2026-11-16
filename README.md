@@ -15,13 +15,14 @@ npx skills add breyr/skills -g              # global (~/.claude/skills) instead 
 Update with `npx skills update`.
 
 `npx skills` installs skills only. Rules are copied by hand into
-`~/.claude/rules` (create the folder if needed). Both rules are optional, but
+`~/.claude/rules` (create the folder if needed). All rules are optional, but
 `tdd.md` expects the `unit-testing` skill to be installed.
 
 ```
 mkdir -p ~/.claude/rules
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/no-excuses.md -o ~/.claude/rules/no-excuses.md
 curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/tdd.md -o ~/.claude/rules/tdd.md
+curl -fsSL https://raw.githubusercontent.com/breyr/skills/main/rules/scope.md -o ~/.claude/rules/scope.md
 ```
 
 Or copy the files from [`rules/`](rules) yourself. Re-run the `curl` commands to
@@ -78,6 +79,7 @@ then re-run the install script. For an always-on rule, add `rules/<name>.md`
 - `teach`: layered, plain-English explanation of a change or subsystem; runs `how` and `why` together.
 - `blast-radius`: what a change could break outside the diff, with the safety claim proven by running code.
 - `architect`: settle the shape before writing it: sketch callers, types, signatures, and module boundaries with unimplemented bodies, compare structurally different designs, and stop before implementing. Writes no files.
+- `plan-chunks`: break work too big for one diff into small ordered units, each with its own check, dependencies, and parallel groups. Plans only; stops before implementing.
 - `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
 - `in-your-own-words`: restate the goal and problem before any work (user-invoked).
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task (user-invoked).
@@ -87,7 +89,7 @@ then re-run the install script. For an always-on rule, add `rules/<name>.md`
 - `create-learning-path`: milestone-based learning roadmap with practice checkpoints. Adapted from cursor/plugins `teaching`.
 - `run-learning-retrospective`: review progress after a milestone and adjust the plan. Adapted from cursor/plugins `teaching`.
 
-`why`, `teach`, `blast-radius`, `architect`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
+`why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
 
 ## Example workflow
@@ -103,7 +105,9 @@ One feature, start to finish. Each step names the skill and when to reach for it
 3. **Decide the shape.** Small or code-level change: `architect` (sketch
    callers, types, signatures; compare two designs; design only, you start
    the implementation after approving it). Bigger or shared change:
-   `design-doc-draft`, then `design-doc-review` against the codebase.
+   `design-doc-draft`, then `design-doc-review` against the codebase. Work
+   too big for one reviewable diff: `plan-chunks` orders it into small units,
+   each with a check.
 4. **Check the risk.** Before editing, `blast-radius` on the planned change to
    find what else it touches and the one fact its safety depends on.
 5. **Build with tests first.** The `tdd` rule forces a failing test before
@@ -125,7 +129,8 @@ Around the edges of that flow:
 Always-on agent rules (not skills). The install script symlinks each
 `rules/*.md` and each docs directory `rules/<name>/` into `~/.claude/rules/`,
 which Claude Code loads every session.
-- `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work.
+- `rules/no-excuses`: agents may not use comments (TODO, "for now", suppressions, dead code) as an excuse to skip real work; a paragraph-long explanatory comment means fix the code instead.
+- `rules/scope`: search for an existing helper before writing one, and change only what was asked (no drive-by refactors, speculative features, or defensive code the types already rule out).
 - `rules/tdd`: every fix and feature starts with a failing test, shown red then green; no cheap test path means say so and ask.
 
 ## Checks

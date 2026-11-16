@@ -31,6 +31,12 @@ Imagine deleting the comment. If the code would be wrong or surprising for a
 reason it cannot fix (an API that returns 200 on failure), keep it. If it would
 just be incomplete or hard to defend (`// TODO: validate`), it was an excuse.
 
+## Length test
+A comment that needs a paragraph to explain what the code does is a smell in
+the code, not a missing comment. The fix is to change the code (rename, extract,
+simplify, restructure), not to document the confusion. Only constraints the code
+cannot express, with linked evidence, earn a long comment.
+
 ## If the rule is not enough
 A rule is guidance, and a model can ignore it. Start with it and watch. If
 excuses keep appearing, escalate in this order:
