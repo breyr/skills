@@ -17,9 +17,8 @@ If the change is one or two files with an obvious approach, say so and stop. A p
 2. **Find the seams.** Split along behavior boundaries (a caller, a module, a
    data shape, a flag), not file types. "All the types, then all the logic,
    then all the tests" is not a plan.
-3. **Cut units.** Each unit is one change with one reason, leaves the repo
-   building with tests green, could land on its own, and is small enough to
-   review in one sitting. Order them so the sequence proves itself:
+3. **Cut units.** Size each one by the Sizing rules below. Order them so the
+   sequence proves itself:
    - the failing test first, then the fix;
    - a refactor that makes the change easy before the behavior change;
    - a subtraction before the reshape;
@@ -36,10 +35,35 @@ If the change is one or two files with an obvious approach, say so and stop. A p
 6. **Stop.** Surface every choice that is the user's as a question with your
    default, then wait. Pushback on the cut sends you back to step 2.
 
+## Sizing
+A unit is as big as one reason, one check, and one review allow. In order of
+weight:
+1. **One reason.** You can describe it in one sentence without "and". If you
+   need "and", it is two units.
+2. **One check.** A single command or observable result proves it. If you
+   cannot name one, the unit is too big or cut in the wrong place.
+3. **One sitting.** A reviewer can hold the whole change in their head and
+   judge it. Changed lines are a rough proxy (about 200 to 300); do not count
+   generated code, lockfiles, or pure renames and moves.
+4. **Landable.** It leaves the repo building with tests green. This can force
+   a unit bigger, such as a rename that must touch every caller at once. That
+   is fine when the change is mechanical and its check is cheap.
+5. **Coupling.** Pieces that cannot be separately correct stay together.
+   Pieces with disjoint files and state split apart so they can run in
+   parallel.
+
+Size labels in the table mean what it takes to verify and review:
+- **S:** one behavior, one or two files, one targeted test or command,
+  reviewed in minutes.
+- **M:** one behavior across a few files or layers, a small group of tests,
+  reviewed in one sitting.
+- **L:** a smell. Split it, or add a one-line reason it cannot be split
+  (mechanical sweep, indivisible rename).
+
 ## Output
 1. **Goal:** the behavior when all units land, and what is out of scope.
 2. **Units:** an ordered table with id, change, files, check, depends on, and
-   size (S, M, L). Each row is a unit someone could start without asking you.
+   size (S, M, L; see Sizing). Each row is a unit someone could start without asking you.
 3. **Parallel groups:** which units can run at the same time, and why they do
    not collide.
 4. **Riskiest unit:** which one and why it sits where it does.
