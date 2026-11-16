@@ -1,6 +1,6 @@
 ---
 name: unit-testing
-description: Write, review, or plan unit tests with language-agnostic best practices (behavior over implementation, minimal mocking, no trivial tests), plus per-language rule files. Also analyzes how a planned change affects existing tests and recommends updates without breaking existing behavior. Use when writing tests, reviewing or trimming tests, deciding what to test, learning to test well, or before changing code that has tests.
+description: Write, review, or plan unit tests with language-agnostic best practices (behavior over implementation, minimal mocking, no trivial tests), plus per-language rule files. Also analyzes how a planned change affects existing tests and recommends updates without breaking existing behavior. Use when writing tests, reviewing or trimming tests, deciding what to test, learning to test well, or before changing code that has tests. Also use for TDD, a failing or regression test for a bug fix, red/green runs, characterization tests, and test fixtures.
 ---
 
 # Unit testing (agnostic core, language rules on demand)

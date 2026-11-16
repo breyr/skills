@@ -7,8 +7,10 @@
   run the rest of the suite.
 - A bug fix starts with a test that reproduces the bug. If you cannot
   reproduce it in a test, you do not yet understand it; say so.
-- The test asserts observable behavior, not implementation details. Follow the
-  `unit-testing` skill for how.
+- The test asserts observable behavior, not implementation details.
+- Before writing, editing, or reviewing any test, invoke the `unit-testing`
+  skill with the Skill tool and follow it. Do this before the first test is
+  written, once per task. Say in your reply that you loaded it.
 - Refactors that keep behavior need existing tests green before and after; if
   coverage is missing, add characterization tests first.
 - If there is no cheap local way to test the change (UI-only, infra, config,

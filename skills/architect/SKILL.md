@@ -1,36 +1,39 @@
 ---
 name: architect
-description: Settle the shape of non-trivial work before writing it. Sketch callers, types, signatures, and module boundaries with unimplemented bodies, compare structurally different designs, then fill in code against the sketch. Use before adding a feature, module, or API that crosses function boundaries.
+description: Settle the shape of non-trivial work before writing it. Sketch callers, types, signatures, and module boundaries with unimplemented bodies, compare structurally different designs, and stop before implementing. Use before adding a feature, module, or API that crosses function boundaries.
 ---
 
-# Architect (shape first, bodies second)
+# Architect (design only, no implementation)
 
-Adapted from pstack `architect` (https://github.com/cursor/plugins/tree/main/pstack/skills/architect), reworked for Claude Code. Lighter than `design-doc-draft`: code-level sketch, no document.
+Adapted from pstack `architect` (https://github.com/cursor/plugins/tree/main/pstack/skills/architect), reworked for Claude Code. Lighter than `design-doc-draft`: a code-level design in the reply, no document.
+
+This skill produces a design, not code. Do not create or edit files, scaffold a project, write stubs or tests, or run the build. Sketches live in the reply as code blocks and stay there. Implementation is a separate step the user starts after approving the design.
 
 ## Steps
-1. **Ground.** List every existing system, caller, and type the new code
+1. **Ground.** List every existing system, caller, and type the new work
    touches and read each. Skip only for true greenfield. Folder and file names
    are context; read them first. Use `how` for unfamiliar areas.
-2. **Usage first.** Write the call site as the caller would want it, before
-   any implementation.
-3. **Sketch.** Types, function signatures, class shapes, and module layout,
-   bodies left unimplemented (throw or return a stub). One file for small
-   changes; a module map plus types file for larger ones.
+2. **Usage first.** Write the call site as the caller would want it.
+3. **Sketch.** Types, function signatures, and module layout as code blocks
+   with no bodies. One block for small changes; a module map plus types for
+   larger ones.
 4. **Compare two designs.** Produce at least two structurally different
    sketches (parallel subagents for large work). Prefer the one with a
    smaller public surface hiding more complexity. Check it for: callers
    needing internal knowledge, escape-hatch types (`any`, untyped maps),
    flag arguments, pass-through layers.
-5. **Agree.** Proceed by default. Stop for the user only on a public API,
-   data, or security choice, or if they asked for a checkpoint. Pushback on
-   the shape sends you back to step 1.
-6. **Implement.** Replace stubs with real code. Surface any deviation from
-   the sketch instead of absorbing it silently.
-7. **Scrap if it fights you.** Repeated workarounds or callers reaching into
-   internals mean the shape is wrong. Redesign from first principles, make it
-   smaller, and redo step 4.
+5. **Recommend and stop.** Name the pick and why. Surface every choice that is
+   the user's (public API, data, security, preference) as a question with your
+   default. Then wait. Pushback on the shape sends you back to step 1.
 
 ## Output
-The usage example, the sketch, and a short note on why this design beat the
-alternative. Stubs must not remain in the final code; per the no-excuses rule,
-finish them or tell the user what is unfinished.
+1. **What:** the behavior being built and what is out of scope.
+2. **Usage:** the call site.
+3. **Design:** the chosen sketch (types, signatures, module map), as code
+   blocks.
+4. **Alternative:** the runner-up design and why it lost.
+5. **How it will be built:** the order of work and how each part will be
+   verified, in prose.
+6. **Decisions for you:** open questions, each with a default.
+
+Leave the repo untouched.
