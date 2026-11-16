@@ -94,6 +94,7 @@ re-run the script.
 | Know what a change could break | `blast-radius` | auto or `/blast-radius` |
 | Write, review, or trim tests | `unit-testing` | auto or `/unit-testing` |
 | Try to break a finished change | `interrogate` | auto or `/interrogate` |
+| Write a commit message or PR description | `write-commit-pr` | auto or `/write-commit-pr`; follows repo conventions |
 | Catch up after time away | `catchup` | `/catchup` only |
 | Stop mid-task so a fresh agent can resume | `pause-safely` | `/pause-safely` only; commits and writes a note |
 | Log where I am for tomorrow | `wrap-up` | auto or `/wrap-up`; writes a note after you approve |
@@ -121,6 +122,9 @@ description. "Only" skills are never loaded on their own.
 - `interrogate`: independent adversaries try to break a diff; only findings a re-run proves are reported.
 - `unit-testing`: language-agnostic unit-testing core (behavior over implementation, minimal mocking, no trivial tests) with per-language rules in `references/` (TS/React today), plus impact analysis of a change on existing tests.
 
+### Ship
+- `write-commit-pr`: write a commit message, PR title, or PR description from the real diff. Follows the repo's own conventions (PR template, CONTRIBUTING, commitlint, recent `git log`) and falls back to Conventional Commits and a short briefing-style body. Checks every claim against the diff; commits or opens a PR only when asked.
+
 ### Prompting (user-invoked)
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task.
 - `in-your-own-words`: restate the goal and problem before any work.
@@ -135,7 +139,7 @@ description. "Only" skills are never loaded on their own.
 - `run-learning-retrospective`: review progress after a milestone and adjust the plan.
 
 ## Credits
-`why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, and `catchup`
+`why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, `catchup`, and `write-commit-pr`
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
 `how` is adapted from [poteto/how](https://github.com/poteto/how), and the two
 learning skills from the [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching)
