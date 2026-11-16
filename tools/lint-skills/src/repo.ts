@@ -5,7 +5,7 @@ import type { Repo, Skill, TextFile } from "./types.ts";
 function readText(root: string, path: string): TextFile | null {
   const full = join(root, path);
   if (!existsSync(full)) return null;
-  return { path, lines: readFileSync(full, "utf8").split("\n") };
+  return { path, lines: readFileSync(full, "utf8").split(/\r?\n/) };
 }
 
 function filesUnder(dir: string): string[] {
