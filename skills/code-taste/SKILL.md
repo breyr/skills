@@ -39,7 +39,8 @@ export function createBatcher<T>(limit = 50) {
 - Use only inputs JSON represents faithfully: strings, finite numbers, booleans. `JSON.stringify` drops `undefined` and turns `NaN` into `null`, so different inputs can share a key.
 
 ```ts
-const key = JSON.stringify({ width, height }); // not `${width}x${height}`, not { width, height }
+const key = JSON.stringify({ width, height }); // not `${width}x${height}`
+// Never pass the object itself ({ width, height }) as the Map key.
 ```
 
 ## Duplicates and late results
