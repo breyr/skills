@@ -93,6 +93,7 @@ re-run the script.
 | Get ready to defend an old design doc | `design-doc-refresh` | auto or `/design-doc-refresh` |
 | Know what a change could break | `blast-radius` | auto or `/blast-radius` |
 | Write, review, or trim tests | `unit-testing` | auto or `/unit-testing` |
+| Apply TypeScript design rules while writing or reviewing code | `code-taste` | auto or `/code-taste` |
 | Try to break a finished change | `interrogate` | auto or `/interrogate` |
 | Write a commit message or PR description | `pr-writing` | auto or `/pr-writing`; follows repo conventions |
 | Catch up after time away | `catchup` | `/catchup` only |
@@ -124,6 +125,9 @@ description. "Only" skills are never loaded on their own.
 
 ### Ship
 - `pr-writing`: write a commit message, PR title, or PR description from the real diff. Follows the repo's own conventions (PR template, CONTRIBUTING, commitlint, recent `git log`) and falls back to Conventional Commits and a short briefing-style body. Checks every claim against the diff; commits or opens a PR only when asked.
+
+### Write and review code
+- `code-taste`: TypeScript design rules: when to add a cache, Set, shared module, resubscription, result type, options object, or builder; where state lives; where tests live; how to name things.
 
 ### Prompting (user-invoked)
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task.

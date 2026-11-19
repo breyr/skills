@@ -34,8 +34,9 @@ ideas map to Jest and others. Check which the repo uses and match it.
 - Async: `await` the thing under test; assert on `rejects`/`resolves`. Do
   not leave floating promises or rely on test timeouts.
 - `it.each` / `test.each` for the same behavior over many inputs.
-- Colocate as the repo does (`foo.test.ts` beside `foo.ts` is the common
-  default). Do not invent a new layout.
+- Put tests in a `tests/` folder beside the source folder, mirroring the
+  module's path (`src/a/b.ts` -> `tests/a/b.test.ts`; see `code-taste`). If
+  the repo already colocates tests, follow it. Do not move existing tests.
 
 ## React
 - Test like a user: render, then query by role, label, or visible text.
