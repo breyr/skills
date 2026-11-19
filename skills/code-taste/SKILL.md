@@ -54,6 +54,12 @@ const key = JSON.stringify({ width, height }); // not `${width}x${height}`, not 
 - A type used outside the feature stays with its owner. Don't copy it into a feature `types.ts`.
 - Extract shared code at the third use for simple logic, and at the second use for shared business rules. It goes in a shared module. Single-use code stays with its responsibility.
 
+## Where tests live
+- Tests never live in the module file they test, and never in the same folder as it.
+- Tests never live inside the source folder. Put them in a `tests/` folder that is a sibling of the source folder.
+- The test's path under `tests/` mirrors the module's path under the source folder, with `.test` before the extension: `src/range/format.ts` is tested by `tests/range/format.test.ts`.
+- If the repo already colocates tests, follow the repo and say so. Don't move existing tests unasked.
+
 ## Lookups
 - Fewer than 10 values: an array with `includes`.
 - 10 or more values: a `Set`.
@@ -74,4 +80,4 @@ const key = JSON.stringify({ width, height }); // not `${width}x${height}`, not 
 ## Applying this
 - When writing, check the core rule first, then the section for the structure you're adding.
 - When reviewing, name the section a change breaks and say why.
-- This file has no test rules. Use the unit-testing skill for tests.
+- This file only says where tests live. For what and how to test, use the unit-testing skill.
