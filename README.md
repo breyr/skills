@@ -127,7 +127,7 @@ description. "Only" skills are never loaded on their own.
 - `pr-writing`: write a commit message, PR title, or PR description from the real diff. Follows the repo's own conventions (PR template, CONTRIBUTING, commitlint, recent `git log`) and falls back to Conventional Commits and a short briefing-style body. Checks every claim against the diff; commits or opens a PR only when asked.
 
 ### Write and review code
-- `code-taste`: TypeScript design rules: when to add a cache, Set, shared module, resubscription, result type, options object, or builder; where state lives; how to name things. Loads when you write or review TypeScript.
+- `code-taste`: TypeScript design rules: when to add a cache, Set, shared module, resubscription, result type, options object, or builder; where state lives; where tests live; how to name things.
 
 ### Prompting (user-invoked)
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task.

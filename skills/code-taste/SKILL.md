@@ -1,6 +1,6 @@
 ---
 name: code-taste
-description: Code-design rules for writing or reviewing TypeScript, covering when to add a cache, a Set, a shared module, a resubscription, a result type, an options object, or a builder, plus where state lives and how to name things. Load it whenever you write, change, or review TypeScript.
+description: Code-design rules for writing or reviewing TypeScript, covering when to add a cache, a Set, a shared module, a resubscription, a result type, an options object, or a builder, plus where state lives and how to name things.
 ---
 
 # Code taste
