@@ -57,10 +57,10 @@ repo's conventions first. Use the defaults below only where the repo is silent.
    change does not touch, give the passing count before and after in one line,
    name the one cause you checked, and say what you did not check. Run this
    check again after review changes the code.
-6. **Clean the prose.** One instruction or fact per short sentence, active
-   voice, one name per thing, real symbol and file names. Cut chatbot
-   openers, "not just X, but Y", decorative em dashes, forced groups of
-   three, and words like "robust", "seamless", and "comprehensive".
+6. **Clean the prose.** Run the `unslop` skill on the commit message, PR
+   title, and PR body. Leave the commit subject's `type(scope):` form alone,
+   and keep real symbol and file names. If the rewrite changes what a sentence
+   claims, repeat step 5.
 7. **Act only as asked.** Show the text. Run `git commit` or `gh pr create`
    only when the user asked for it. Pass the message from a file (`git commit
    -F`, `gh pr create --body-file`), not inline, so shell quoting cannot change
