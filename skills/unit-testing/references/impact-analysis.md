@@ -19,7 +19,7 @@ change. If tests cannot run, say so and continue without a baseline.
 
 ## 3. Find affected tests
 For each changed or removed symbol, file, or contract, search for:
-- Tests that import or reference it (colocated and elsewhere).
+- Tests that import or reference it, wherever they live.
 - Tests of its callers and of anything it calls whose behavior shifts.
 - Module mocks and stubs of it (`vi.mock`, `jest.mock`, hand-rolled fakes):
   they keep passing while the real contract changes. High risk.

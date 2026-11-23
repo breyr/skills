@@ -28,10 +28,11 @@ To add a language, create `references/<language>.md` and add a line above.
 
 ## Workflow (Write)
 1. Read the code under test and the existing tests, runner config, setup
-   files, and helpers. Match their conventions. Before writing any mock,
-   search the repo's test helper folder and the existing mocks of the same
-   module, and reuse what exists instead of writing a second copy. A mock used
-   in two or more test files moves to one shared helper.
+   files, and helpers. Match their conventions, except test location (see
+   Where tests live). Before writing any mock, search the repo's test helper
+   folder and the existing mocks of the same module, and reuse what exists
+   instead of writing a second copy. A mock used in two or more test files
+   moves to one shared helper.
 2. Tell the user what you will test and what you are deliberately skipping,
    and why, *before* writing.
 3. Write the tests. Run them.
@@ -39,6 +40,19 @@ To add a language, create `references/<language>.md` and add a line above.
    confirm a test goes red, then restore it. A test that cannot fail is noise.
    Skip this under TDD, where the red run before the fix is the proof.
 5. Report: covered, skipped, what was mocked and why.
+
+## Where tests live
+- Mirror the source tree. Tests sit in a test root (`tests/`) with the same
+  folders as the source root (`src/`) below it. Each file keeps the module's
+  name plus `.test` before the extension:
+  `src/billing/invoice.ts` is tested by `tests/billing/invoice.test.ts`.
+- Never put a test in the module's folder or in a `__tests__` folder beside
+  it.
+- Shared helpers (fakes, factories, render helpers) go in a helper folder
+  under the test root, such as `tests/testUtils/`. They are not tests, so they
+  do not mirror a module.
+- New tests follow this even when nearby tests are colocated. Moving existing
+  colocated tests is a separate change: ask first.
 
 ## What to test
 - Logic with branches: conditionals, parsing, calculations, state
