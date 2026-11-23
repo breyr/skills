@@ -39,6 +39,8 @@ fact's rung.
 
 ## Rules
 - Read-only apart from throwaway scripts in the scratchpad.
+- Write the report through the `unslop` skill. Keep the **proven** and
+  **unproven** markers, the confidence rungs, and every `file:line` cite.
 - Remove private names, hosts, and secrets before anything is shared.
 - Pairs with `unit-testing` when the answer is "add this test first".
 

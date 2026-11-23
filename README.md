@@ -95,6 +95,7 @@ re-run the script.
 | Write, review, or trim tests | `unit-testing` | auto or `/unit-testing` |
 | Try to break a finished change | `interrogate` | auto or `/interrogate` |
 | Write a commit message or PR description | `pr-writing` | auto or `/pr-writing`; follows repo conventions |
+| Cut AI tells from writing | `unslop` | auto or `/unslop`; `teach`, `blast-radius`, and `pr-writing` run it |
 | Catch up after time away | `catchup` | `/catchup` only |
 | Stop mid-task so a fresh agent can resume | `pause-safely` | `/pause-safely` only; commits and writes a note |
 | Log where I am for tomorrow | `wrap-up` | auto or `/wrap-up`; writes a note after you approve |
@@ -124,6 +125,7 @@ description. "Only" skills are never loaded on their own.
 
 ### Ship
 - `pr-writing`: write a commit message, PR title, or PR description from the real diff. Follows the repo's own conventions (PR template, CONTRIBUTING, commitlint, recent `git log`) and falls back to Conventional Commits and a short briefing-style body. Checks every claim against the diff; commits or opens a PR only when asked.
+- `unslop`: cut AI tells from any writing with 33 numbered rules. `teach`, `blast-radius`, and `pr-writing` run it on their output.
 
 ### Prompting (user-invoked)
 - `sharpen`: rewrite a prompt to be deeper, not bigger, without doing the task.
@@ -139,7 +141,7 @@ description. "Only" skills are never loaded on their own.
 - `run-learning-retrospective`: review progress after a milestone and adjust the plan.
 
 ## Credits
-`why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, `catchup`, and `pr-writing`
+`why`, `teach`, `blast-radius`, `architect`, `plan-chunks`, `interrogate`, `in-your-own-words`, `sharpen`, `pause-safely`, `catchup`, `pr-writing`, and `unslop`
 are adapted from Lauren Tan's [pstack](https://github.com/cursor/plugins/tree/main/pstack).
 `how` is adapted from [poteto/how](https://github.com/poteto/how), and the two
 learning skills from the [cursor/plugins `teaching`](https://github.com/cursor/plugins/tree/main/teaching)

@@ -18,13 +18,22 @@ documents mechanics. Here you choose what matters for this person.
    - Open with a plain definition, then tie it to the case at hand.
    - Add one layer at a time, each small enough to hold in your head.
    - Define jargon the first time it matters.
-4. **Diagram multi-part systems gradually.** Mermaid for flows and state;
-   start with two boxes and add a part per step.
-5. **Close with the takeaways**, then offer a single follow-up direction.
+4. **Diagram multi-part systems as a series.** Mermaid for flows and state.
+   For three or more moving parts, draw a short series: start with two boxes,
+   then redraw the last diagram with one more part each time. One diagram
+   holding every part at once is reference, not teaching.
+5. **End with one offer to go deeper.** Do not print a takeaways list or a
+   recap. The takeaways from step 1 shape what you say; they are not a
+   closing section.
 
 ## Style
 - Conversational, short sentences, plain English, no em dashes.
-- No quizzes, no filler openers, no labels like "Important:".
+- Write the reply through the `unslop` skill. Keep `why`'s inference labels
+  and your guess and not-checked notes as findings; they are not filler.
+- No quizzes, no filler openers, no labels like "Important:", "TL;DR", "the key
+  insight", or "at its core".
+- No pacing theater: no "Pause", no asking them to say it back, no flagging a
+  part as important or tricky. Just say it.
 - Cite `file:line` for anything claimed about the code.
 - Say what is a guess and what you did not check.
 
